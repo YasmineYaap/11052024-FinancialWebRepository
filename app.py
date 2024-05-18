@@ -7,8 +7,9 @@ import requests
 
 flag = 1
 name = ""
-palm.configure(api_key="AIzaSyDEM9uvFL2Kb_PkV2rAAohtwiFiKnT8MQE")
-os.environ["REPLICATE_API_TOKEN"] = "api : r8_bQWq15nf3GsVLFOb78twM24oQADAzJN4Q1vA9"
+
+makersuite_api = os.getenv("MAKERSUITE_API_TOKEN")
+palm.configure(api_key=makersuite_api)
 
 model = {"model" : "models/chat-bison-001"}
 app = Flask (__name__)
