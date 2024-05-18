@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from PIL import Image
+
 import google.generativeai as palm
 import replicate
 import os
