@@ -4,6 +4,9 @@ import google.generativeai as palm
 import replicate
 import os
 import requests
+import sqlite3
+import datetime
+from flask import Markup
 
 flag = 1
 name = ""
@@ -24,6 +27,13 @@ def main():
     print("flag", flag)
     if flag == 1:
         name = request.form.get("q")
+        current_time=datetime.datetime.now()
+        conn = sqlite3.connect('log.db')
+        c=conn.cursor()
+        c.execute("INSERT INTO user (name,time) VALUES(?,?)",(name,current_time))
+        conn.commit()
+        c.close()
+        conn.close()        
         flag = 0
     return(render_template("main.html",r=name))
 
